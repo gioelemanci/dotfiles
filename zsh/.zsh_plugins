@@ -1,0 +1,13 @@
+# ~/.zsh_plugins
+
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# fzf-tab
+source ~/.zsh/fzf-tab/fzf-tab.plugin.zsh
+
+# powerlevel10k
+source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme

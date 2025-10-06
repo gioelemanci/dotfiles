@@ -1,0 +1,12 @@
+# ~/.bash_exports
+
+# Default editor for CLI tools
+export EDITOR="nvim"
+
+# Custom directories
+export DOTFILES="$HOME/dotfiles"
+export SCRIPTS="$HOME/scripts"
+export PROJECTS="$HOME/projects"
+
+# Add custom bin folders to PATH
+export PATH="$HOME/.local/bin:$PATH"
