@@ -1,0 +1,114 @@
+/* Import pywal colors */
+@import '/home/mountchio/.cache/wal/colors-waybar.css';
+
+* {
+    box-shadow: none;
+    text-shadow: none;
+    transition: all 0.3s ease-in-out;
+    font-family: 'JetBrains Mono Nerd Font', monospace;
+}
+
+window {
+    background: alpha(@background, 0.8);
+	  background-size: contain;
+    font-size: 16px;
+}
+
+button {
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20%;
+	animation: gradient_f 20s ease-in infinite;
+	border-radius: 30px;
+	border:10px;
+  margin: 10px;
+	transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+	color: @foreground;
+	background-color: alpha(@background, 0.2);
+}
+
+button:hover {
+    background: alpha(@color1, 0.4);
+    border: 2px solid @color1;
+    color: @background;
+    background-size: 20%;
+    background-repeat: no-repeat;
+	  background-position: center;
+    margin: 10px;
+    border-radius: 80px;
+    box-shadow: 0 0 50px @shadow;
+}
+
+/* ========== BUTTONS ========== */
+
+#lock {
+    background-color: alpha(@color4, 0.3);
+    border-color: alpha(@color4, 0.5);
+    background-image: image(url("icons/lock.png"));
+}
+
+#lock:hover {
+    background-color: @color4;
+    border-color: @color4;
+    background-image: image(url("icons/lock.png"));
+}
+
+#logout {
+    background-color: alpha(@color3, 0.3);
+    border-color: alpha(@color3, 0.5);
+    background-image: image(url("icons/logout.png"));
+}
+
+#logout:hover {
+    background-color: @color3;
+    border-color: @color3;
+    background-image: image(url("icons/logout.png"));
+}
+
+#suspend {
+    background-color: alpha(@color6, 0.3);
+    border-color: alpha(@color6, 0.5);
+    background-image: image(url("icons/suspend.png"));
+}
+
+#suspend:hover {
+    background-color: @color6;
+    border-color: @color6;
+    background-image: image(url("icons/suspend.png"));
+}
+
+#hibernate {
+    background-color: alpha(@color5, 0.3);
+    border-color: alpha(@color5, 0.5);
+    background-image: image(url("icons/hibernate.png"));
+}
+
+#hibernate:hover {
+    background-color: @color5;
+    border-color: @color5;
+    background-image: image(url("icons/hibernate.png"));
+}
+
+#shutdown {
+    background-color: alpha(@color9, 0.3);
+    border-color: alpha(@color9, 0.5);
+    background-image: image(url("icons/shutdown.png"));
+}
+
+#shutdown:hover {
+    background-color: @color9;
+    border-color: @color9;
+    background-image: image(url("icons/shutdown.png"));
+}
+
+#reboot {
+    background-color: alpha(@color11, 0.3);
+    border-color: alpha(@color11, 0.5);
+    background-image: image(url("icons/reboot.png"));
+}
+
+#reboot:hover {
+    background-color: @color11;
+    border-color: @color11;
+    background-image: image(url("icons/reboot.png"));
+}

@@ -1,0 +1,210 @@
+/* Import pywal colors */
+@import '/home/mountchio/.cache/wal/colors-waybar.css';
+
+/* ===== GLOBAL STYLES ===== */
+* {
+  font-family: 'JetBrains Mono Nerd Font', 'Font Awesome 6 Free', monospace;
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+/* Main waybar window */
+window#waybar { 
+  background: transparent;
+  color: @foreground; 
+  transition-property: background-color; 
+  transition-duration: 0.5s; 
+  border-bottom: 2px solid alpha(@color1, 0.8); 
+  margin-bottom: -2px; 
+}
+
+/* Hover effects for interactive elements */
+button:hover {
+  background: alpha(@color1, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+/* ===== WORKSPACES ===== */
+#workspaces {
+  margin: 0 4px;
+  background: alpha(@background, 0.8);
+  border-radius: 10px;
+  padding: 0 5px;
+}
+
+#workspaces button {
+  padding: 5px 10px;
+  margin: 2px;
+  border-radius: 6px;
+  color: alpha(@foreground, 0.7);
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  color: @background;
+  background: @color1;
+  box-shadow: 0 2px 4px alpha(@color1, 0.4);
+}
+
+#workspaces button.urgent {
+  color: @background;
+  background: @color9;
+  animation: blink 0.5s linear infinite alternate;
+}
+
+#workspaces button:hover {
+  color: @color1;
+  background: alpha(@color1, 0.15);
+}
+
+/* ===== WINDOW TITLE ===== */
+#window {
+  margin: 0 4px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: @foreground;
+  background: alpha(@color8, 0.1);
+  font-weight: 400;
+}
+
+#window.empty {
+  background: transparent;
+}
+
+/* ===== CLOCK ===== */
+#clock {
+  margin: 0 4px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: @color4;
+  background: alpha(@color4, 0.15);
+  font-weight: bold;
+  font-size: 15px;
+}
+
+#clock:hover {
+  color: @background;
+  background: @color4;
+}
+
+/* ===== SYSTEM TRAY ===== */
+#tray {
+  margin: 0 4px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: alpha(@color3, 0.15);
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+  -gtk-icon-effect: highlight;
+  background-color: @color9;
+}
+
+/* ===== INDIVIDUAL MODULES ===== */
+#idle_inhibitor {
+  margin: 0 2px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: @color3;
+  background: alpha(@color3, 0.15);
+}
+
+#idle_inhibitor.activated {
+  color: @color9;
+  background: alpha(@color9, 0.2);
+}
+
+#pulseaudio {
+  margin: 0 2px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: @color2;
+  background: alpha(@color2, 0.15);
+}
+
+#pulseaudio.muted {
+  color: @color8;
+  background: alpha(@color8, 0.15);
+}
+
+#network {
+  margin: 0 2px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: @color6;
+  background: alpha(@color6, 0.15);
+}
+
+#network.disconnected {
+  color: @color9;
+  background: alpha(@color9, 0.15);
+}
+
+#battery {
+  margin: 0 2px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: @color2;
+  background: alpha(@color2, 0.15);
+}
+
+#battery.charging {
+  color: @color10;
+  background: alpha(@color10, 0.15);
+}
+
+#battery.warning:not(.charging) {
+  color: @color11;
+  background: alpha(@color11, 0.2);
+  animation: blink 0.5s linear infinite alternate;
+}
+
+#battery.critical:not(.charging) {
+  color: @color9;
+  background: alpha(@color9, 0.25);
+  animation: blink 0.5s linear infinite alternate;
+}
+
+/* Power button */
+#custom-power {
+  margin: 0 4px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  color: @color9;
+  background: alpha(@color9, 0.15);
+  font-size: 16px;
+}
+
+#custom-power:hover {
+  color: @background;
+  background: @color9;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes blink {
+  to {
+    background-color: alpha(@foreground, 0.1);
+    color: @foreground;
+  }
+}
+
+/* Smooth transitions for all modules */
+#workspaces,
+#window,
+#clock,
+#idle_inhibitor,
+#pulseaudio,
+#network,
+#battery,
+#custom-power,
+#tray {
+  transition: all 0.3s ease-in-out;
+}
