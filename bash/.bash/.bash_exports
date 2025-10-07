@@ -8,5 +8,7 @@ export DOTFILES="$HOME/dotfiles"
 export SCRIPTS="$HOME/scripts"
 export PROJECTS="$HOME/projects"
 
+export HISTFILE="$HOME/.bash/.bash_history"
+
 # Add custom bin folders to PATH
 export PATH="$HOME/.local/bin:$PATH"

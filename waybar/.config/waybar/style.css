@@ -17,8 +17,7 @@ window#waybar {
   color: @foreground; 
   transition-property: background-color; 
   transition-duration: 0.5s; 
-  border-bottom: 2px solid alpha(@color1, 0.8); 
-  margin-bottom: -2px; 
+  border: none; 
 }
 
 /* Hover effects for interactive elements */
@@ -67,7 +66,7 @@ button:hover {
   padding: 6px 12px;
   border-radius: 8px;
   color: @foreground;
-  background: alpha(@color8, 0.1);
+  background: alpha(@color8, 0.5);
   font-weight: 400;
 }
 
@@ -80,8 +79,8 @@ button:hover {
   margin: 0 4px;
   padding: 6px 12px;
   border-radius: 8px;
-  color: @color4;
-  background: alpha(@color4, 0.15);
+  color: @foreground;
+  background: alpha(@color4, 0.55555);
   font-weight: bold;
   font-size: 15px;
 }
@@ -114,12 +113,12 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color3;
-  background: alpha(@color3, 0.15);
+  background: alpha(@color3, 0.3);
 }
 
 #idle_inhibitor.activated {
   color: @color9;
-  background: alpha(@color9, 0.2);
+  background: alpha(@color9, 0.3);
 }
 
 #pulseaudio {
@@ -127,12 +126,12 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color2;
-  background: alpha(@color2, 0.15);
+  background: alpha(@color2, 0.3);
 }
 
 #pulseaudio.muted {
   color: @color8;
-  background: alpha(@color8, 0.15);
+  background: alpha(@color8, 0.3);
 }
 
 #network {
@@ -140,12 +139,12 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color6;
-  background: alpha(@color6, 0.15);
+  background: alpha(@color6, 0.3);
 }
 
 #network.disconnected {
   color: @color9;
-  background: alpha(@color9, 0.15);
+  background: alpha(@color9, 0.3);
 }
 
 #battery {
@@ -153,23 +152,23 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color2;
-  background: alpha(@color2, 0.15);
+  background: alpha(@color2, 0.3);
 }
 
 #battery.charging {
   color: @color10;
-  background: alpha(@color10, 0.15);
+  background: alpha(@color10, 0.3);
 }
 
 #battery.warning:not(.charging) {
   color: @color11;
-  background: alpha(@color11, 0.2);
+  background: alpha(@color11, 0.3);
   animation: blink 0.5s linear infinite alternate;
 }
 
 #battery.critical:not(.charging) {
   color: @color9;
-  background: alpha(@color9, 0.25);
+  background: alpha(@color9, 0.3);
   animation: blink 0.5s linear infinite alternate;
 }
 
@@ -179,7 +178,7 @@ button:hover {
   padding: 6px 10px;
   border-radius: 6px;
   color: @color9;
-  background: alpha(@color9, 0.15);
+  background: alpha(@color9, 0.3);
   font-size: 16px;
 }
 

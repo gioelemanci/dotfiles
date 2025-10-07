@@ -4,12 +4,6 @@
 
 echo "🔄 Starting full system update and cleanup..."
 
-# Update mirrorlist (optional, requires reflector)
-#if command -v reflector &> /dev/null; then
-#    echo "🌐 Updating mirrorlist with reflector..."
-#    sudo reflector --latest 20 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
-#fi
-
 # Update system packages
 echo "📦 Updating system packages..."
 sudo pacman -Syu --noconfirm

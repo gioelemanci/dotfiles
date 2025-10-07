@@ -9,20 +9,20 @@ fi
 PROMPT='%n@%m %1~ %# '
 
 # Load modular config files
-[[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
-[[ -f ~/.zsh_exports ]] && source ~/.zsh_exports
-[[ -f ~/.zsh_functions ]] && source ~/.zsh_functions
-[[ -f ~/.zsh_plugins ]] && source ~/.zsh_plugins
-[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+[[ -f ~/.zsh/.zsh_aliases ]] && source ~/.zsh/.zsh_aliases
+[[ -f ~/.zsh/.zsh_exports ]] && source ~/.zsh/.zsh_exports
+[[ -f ~/.zsh/.zsh_plugins ]] && source ~/.zsh/.zsh_plugins
+[[ -f ~/.zsh/.p10k.zsh ]] && source ~/.zsh/.p10k.zsh
 
 # Enable completion system
+ZCOMPDUMP=~/.zsh/.zcompdump
 autoload -Uz compinit
 compinit
 
 # Improve history behavior
 HISTSIZE=10000
 SAVEHIST=20000
-HISTFILE=~/.zsh_history
+HISTFILE=~/.zsh/.zsh_history
 setopt HIST_IGNORE_DUPS
 setopt HIST_REDUCE_BLANKS
 setopt SHARE_HISTORY

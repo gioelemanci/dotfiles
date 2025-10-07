@@ -8,8 +8,8 @@
 PS1='[\u@\h \W]\$ '
 
 # Load modular configuration files
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
-[[ -f ~/.bash_exports ]] && source ~/.bash_exports
+[[ -f ~/.bash/.bash_aliases ]] && source ~/.bash/.bash_aliases
+[[ -f ~/.bash/.bash_exports ]] && source ~/.bash/.bash_exports
 
 # Enable bash completion if availableg
 if [ -f /etc/bash_completion ]; then
