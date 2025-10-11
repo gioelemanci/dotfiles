@@ -1,0 +1,21 @@
+@import "~/.cache/wal/colors-rofi-dark"
+
+configuration {
+    font: "JetBrains Mono 12";
+    show-icons: true;
+    icon-theme: "Papirus";
+    display-drun: " ";
+    display-run: " ";
+    display-window: " ";
+    display-ssh: " ";
+    location: 0;
+    fullscreen: false;
+    padding: 20;
+    border: 2;
+    separator-style: "none";
+    lines: 10;
+    columns: 1;
+    fixed-num-lines: true;
+    cycle: true;
+    matching: "fuzzy";
+}

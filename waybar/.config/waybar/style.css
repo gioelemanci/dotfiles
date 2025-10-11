@@ -13,7 +13,7 @@
 
 /* Main waybar window */
 window#waybar { 
-  background: transparent;
+  background: @background;
   color: @foreground; 
   transition-property: background-color; 
   transition-duration: 0.5s; 
@@ -152,25 +152,29 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color2;
-  background: alpha(@color2, 0.3);
+  background: transparent;
+  min-width: 50px;
 }
 
 #battery.charging {
   color: @color10;
-  background: alpha(@color10, 0.3);
 }
 
 #battery.warning:not(.charging) {
   color: @color11;
-  background: alpha(@color11, 0.3);
   animation: blink 0.5s linear infinite alternate;
 }
 
 #battery.critical:not(.charging) {
   color: @color9;
-  background: alpha(@color9, 0.3);
   animation: blink 0.5s linear infinite alternate;
 }
+
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.3; }
+}
+
 
 /* Power button */
 #custom-power {

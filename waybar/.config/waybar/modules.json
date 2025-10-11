@@ -72,7 +72,7 @@
   
   "pulseaudio": {
     "scroll-step": 5,
-    "format": "{icon} {volume}%",
+    "format": "{icon} {volume}",
     "format-muted": "󰖁 Muted",
     "format-icons": {
       "headphone": "󰋋",
@@ -90,7 +90,7 @@
   },
   
   "network": {
-    "format-wifi": "󰤨 {signalStrength}%",
+    "format-wifi": "󰤨 {signalStrength}",
     "format-ethernet": "󰈀 Connected", 
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "󰤭 Disconnected",
@@ -99,19 +99,26 @@
     "on-click-right": "nm-connection-editor"
   },
   
-  "battery": {
-    "states": {
-      "warning": 30,
-      "critical": 15
-    },
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-plugged": "󰂄 {capacity}%",
-    "format-alt": "{icon} {time}",
-    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "on-click-right": "gnome-power-statistics"
+"battery": {
+  "states": {
+    "warning": 30,
+    "critical": 15
   },
-  
+  "format": "{icon} {capacity}",
+  "format-charging": "⚡ {capacity}",
+  "format-plugged": "⚡ {capacity}",
+  "format-alt": "{icon} {time}",
+  "format-icons": [
+    "৹৹৹৹৹",  // 0–19%
+    "▋৹৹৹৹",  // 20–39%
+    "▋▋৹৹৹",  // 40–59%
+    "▋▋▋৹৹",  // 60–79%
+    "▋▋▋▋৹",  // 80–99%
+    "▋▋▋▋▋"   // 100%
+  ],
+  "on-click-right": "gnome-power-statistics"
+},
+ 
   "custom/power": {
     "format": "⏻",
     "tooltip": "Power Menu",
