@@ -20,8 +20,8 @@
   ],
   "modules-right": [
     "tray",
-    "idle_inhibitor",
     "pulseaudio",
+    "idle_inhibitor",
     "network",
     "battery",
     "custom/power"

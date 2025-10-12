@@ -116,7 +116,7 @@
     "▋▋▋▋৹",  // 80–99%
     "▋▋▋▋▋"   // 100%
   ],
-  "on-click-right": "gnome-power-statistics"
+  "on-click-right": "kitty battop"
 },
  
   "custom/power": {

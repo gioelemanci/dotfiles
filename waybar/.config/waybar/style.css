@@ -126,12 +126,12 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color2;
-  background: alpha(@color2, 0.3);
+  background: transparent;
 }
 
 #pulseaudio.muted {
   color: @color8;
-  background: alpha(@color8, 0.3);
+  background: transparent;
 }
 
 #network {
@@ -139,7 +139,7 @@ button:hover {
   padding: 6px 8px;
   border-radius: 6px;
   color: @color6;
-  background: alpha(@color6, 0.3);
+  background: alpha(@color3, 0.3);
 }
 
 #network.disconnected {
@@ -182,7 +182,7 @@ button:hover {
   padding: 6px 10px;
   border-radius: 6px;
   color: @color9;
-  background: alpha(@color9, 0.3);
+  background: alpha(@color3, 0.3);
   font-size: 16px;
 }
 
