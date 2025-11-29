@@ -1,0 +1,71 @@
+# -------------------------------------------------------------------------
+# Zathura Configuration for Neovim Workflow
+# -------------------------------------------------------------------------
+
+# --- Core Interface Settings ---
+
+# Copy text to system clipboard 
+set selection-clipboard clipboard
+
+# Hide the scrollbar (cleaner look, use vim-keys to scroll)
+set guioptions ""
+
+# Adjust the document to window width when opening (ideal for tiling WMs)
+set adjust-open width
+
+# Set the status bar font
+set font "JetBrainsMono Nerd Font 11"
+
+# --- Navigation & Zoom ---
+
+# Enable smooth scrolling
+set scroll-page-aware true
+
+# Zoom step size
+set zoom-step 10
+
+# --- Colors & Theming (Dark Mode / Catppuccin Mocha) ---
+
+# Enable "recolor" mode by default
+set recolor "true"
+
+# Keep original colors for images/graphs
+set recolor-keephue "true"
+
+# -- Theme Colors (Catppuccin Mocha) --
+
+# Base Interface Colors
+set default-bg "#1E1E2E"
+set default-fg "#CDD6F4"
+
+set statusbar-bg "#1E1E2E"
+set statusbar-fg "#CDD6F4"
+
+set inputbar-bg "#1E1E2E"
+set inputbar-fg "#CDD6F4"
+
+set notification-bg "#1E1E2E"
+set notification-fg "#CDD6F4"
+
+set notification-error-bg "#1E1E2E"
+set notification-error-fg "#F38BA8"
+
+set notification-warning-bg "#1E1E2E"
+set notification-warning-fg "#F9E2AF"
+
+# Recolor Mode Colors
+# Light color becomes Background
+set recolor-lightcolor "#1E1E2E"
+# Dark color becomes Text
+set recolor-darkcolor  "#CDD6F4"
+
+# --- Keybindings (Optional) ---
+
+# Map 'i' to invert colors (default Ctrl+r)
+map i recolor
+
+# Reload document manually (VimTex does this auto, but good to have)
+map r reload
+
+# Toggle status bar visibility
+map b toggle_statusbar

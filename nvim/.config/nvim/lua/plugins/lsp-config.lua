@@ -1,40 +1,75 @@
 return {
   {
-    "mason-org/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
-  },
-  {
-    "mason-org/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls" },
-      })
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "hrsh7th/cmp-nvim-lsp",
+    },
     config = function()
+      -- Import required modules
+      local mason = require("mason")
+      local mason_lspconfig = require("mason-lspconfig")
+      local lspconfig = require("lspconfig")
+
+      -- Capabilities for autocompletion (integration with nvim-cmp)
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      -- nuova API
-      vim.lsp.config("lua_ls", {
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = { globals = { "vim" } },
-          },
+      -- 1. Initialize Mason (Package Manager)
+      mason.setup()
+
+      -- 2. Initialize Mason-LSPConfig with "Handlers"
+      -- This automates the setup for installed servers and fixes your error
+      mason_lspconfig.setup({
+        -- List of servers to install automatically
+        ensure_installed = { "lua_ls", "texlab" },
+
+        -- HANDLERS: Define how to setup each server
+        handlers = {
+          -- A. Default handler: Applies to every server without a specific config
+          function(server_name)
+            lspconfig[server_name].setup({
+              capabilities = capabilities,
+            })
+          end,
+
+          -- B. Specific configuration for Lua
+          ["lua_ls"] = function()
+            lspconfig.lua_ls.setup({
+              capabilities = capabilities,
+              settings = {
+                Lua = {
+                  diagnostics = { globals = { "vim" } },
+                },
+              },
+            })
+          end,
+
+          -- C. Specific configuration for LaTeX (TexLab)
+          ["texlab"] = function()
+            lspconfig.texlab.setup({
+              capabilities = capabilities,
+              settings = {
+                texlab = {
+                  build = {
+                    -- Use VimTeX for building, so disable build-on-save here
+                    onSave = false, 
+                  },
+                  chktex = {
+                    onOpenAndSave = true, -- Enable linter for common LaTeX errors
+                  },
+                },
+              },
+            })
+          end,
         },
       })
 
-      vim.lsp.start("lua_ls")
-
-      -- keymaps
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+      -- 3. Keymaps
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info" })
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Variable" })
     end,
   },
 }
-
