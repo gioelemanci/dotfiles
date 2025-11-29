@@ -1,0 +1,31 @@
+* {
+    /* ---- Catppuccin Mocha Palette ---- */
+    /* Reference: https://github.com/catppuccin/rofi */
+
+    /* Main Background (Base) */
+    /* Added 'ff' at the end for full opacity, or change to 'cc' for transparency */
+    background:     #1e1e2eff;
+    
+    /* Alternative Background (Surface0) - Used for input bar and buttons */
+    background-alt: #313244ff;
+
+    /* Text Color (Text) */
+    foreground:     #cdd6f4ff;
+
+    /* Selection Color (Blue) */
+    selected:       #89b4faff;
+
+    /* Active Color (Green) */
+    active:         #a6e3a1ff;
+
+    /* Urgent Color (Red) */
+    urgent:         #f38ba8ff;
+
+    /* ---- Global Variables ---- */
+    border-colour:  @selected;
+    handle-colour:  @selected;
+    
+    /* Fallback image */
+    /* This will still be updated by your wallpaper script for the left image */
+    current-image:  url("/usr/share/backgrounds/archlinux/simple.png", height);
+}

@@ -3,6 +3,7 @@
 # Configuration
 WALLPAPER_DIR="$HOME/dotfiles/wallpapers/Pictures/wallpapers"
 INDEX_FILE="$HOME/.config/hypr/swww/.swww_index"
+ROFI_WALL_FILE="$HOME/.config/rofi/current_wallpaper.rasi"
 
 # Get list of image files
 IMAGES=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | sort))
@@ -21,6 +22,14 @@ NEXT_WALL="${IMAGES[$NEXT_INDEX]}"
 
 # Apply wallpaper with transition
 swww img "$NEXT_WALL" --transition-type wipe --transition-step 30 --transition-fps 60
+
+# --- UPDATE ROFI & HYPRLOCK ---
+# 1. Write the Rofi config file
+echo "* { current-image: url(\"$NEXT_WALL\", height); }" > "$ROFI_WALL_FILE"
+
+# 2. Copy image for Hyprlock (blur effect)
+cp "$NEXT_WALL" /tmp/current_wallpaper.png
+# ------------------------------
 
 # Generate Pywal color palette
 wal -i "$NEXT_WALL"
