@@ -28,36 +28,56 @@ button:hover {
 
 /* ===== WORKSPACES ===== */
 #workspaces {
-  margin: 0 4px;
-  background: alpha(@background, 0.8);
-  border-radius: 10px;
-  padding: 0 5px;
+    background: transparent;
+    margin: 0 2px;
+    padding: 0;
 }
 
 #workspaces button {
-  padding: 5px 10px;
-  margin: 2px;
-  border-radius: 6px;
-  color: alpha(@foreground, 0.7);
-  background: transparent;
-  transition: all 0.3s ease-in-out;
+    /* Base state (inactive) */
+    padding: 0 8px;           /* Compact padding */
+    margin: 0 3px;            /* Spacing between pills */
+    border-radius: 12px;
+    background-color: @surface0; /* Light/Transparent background */
+    color: @foreground;
+    font-weight: bold;        /* Bold numbers look better */
+    
+    /* Smooth Animation with a slight "bounce" */
+    transition: all 0.3s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+    opacity: 0.7;
 }
 
-#workspaces button.active {
-  color: @background;
-  background: @color1;
-  box-shadow: 0 2px 4px alpha(@color1, 0.4);
-}
-
-#workspaces button.urgent {
-  color: @background;
-  background: @color9;
-  animation: blink 0.5s linear infinite alternate;
-}
-
+/* Hover state */
 #workspaces button:hover {
-  color: @color1;
-  background: alpha(@color1, 0.15);
+    background-color: alpha(@color1, 0.3);
+    color: @foreground;
+    opacity: 1;
+}
+
+/* ACTIVE Workspace */
+#workspaces button.active {
+    /* Horizontal expansion to highlight the current workspace */
+    padding: 0 18px; 
+    
+    background-color: @color1; /* Pywal accent color */
+    color: @background;        /* Dark text for contrast */
+    opacity: 1;
+    
+    /* Glow effect matching the wallpaper color */
+    box-shadow: 0 4px 8px alpha(@color1, 0.3);
+}
+
+/* URGENT Workspace (Notification) */
+#workspaces button.urgent {
+    background-color: @color1; 
+    color: @background;
+    animation: blink 0.6s linear infinite alternate;
+}
+
+/* Optional: Define blink animation if not already present */
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.5; }
 }
 
 /* ===== WINDOW TITLE ===== */

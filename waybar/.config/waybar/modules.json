@@ -1,21 +1,20 @@
 { 
   // ===== LEFT MODULES =====
-  "hyprland/workspaces": {
+"hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
     "on-click": "activate",
     "active-only": false,
     "all-outputs": true,
-    "format": "{}",
-    "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
-    },
+    
+    // Mostra solo il nome (il numero) del workspace
+    "format": "{name}",
+    
+    // Rimuoviamo format-icons poiché non servono più
     "persistent-workspaces": {
       "*": 5
     }
-  },
+},
   
   "hyprland/window": {
     "format": "{title}",

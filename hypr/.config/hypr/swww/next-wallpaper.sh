@@ -32,7 +32,7 @@ cp "$NEXT_WALL" /tmp/current_wallpaper.png
 # ------------------------------
 
 # Generate Pywal color palette
-wal -i "$NEXT_WALL"
+wal -i "$NEXT_WALL" -s
 
 # Save new index
 echo "$NEXT_INDEX" > "$INDEX_FILE"
