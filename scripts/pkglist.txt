@@ -1,0 +1,94 @@
+# ==============================
+# SYSTEM & CORE (Arch Base)
+# ==============================
+base                    # Minimal package set
+linux                   # The Kernel
+linux-firmware          # Firmware for hardware
+base-devel              # Build tools (gcc, make, etc.)
+btrfs-progs             # BTRFS filesystem support
+efibootmgr              # UEFI Boot manager
+grub                    # Bootloader
+pacman-contrib          # Scripts like paccache
+polkit                  # Privilege management
+git                     # Version control
+zsh                     # Shell
+stow                    # Dotfile manager
+less                    # Terminal pager
+openssh                 # SSH Client/Server
+pipewire-pulse          # Audio server (PulseAudio compatibility)
+brightnessctl           # Lightweight backlight control
+
+# ==============================
+# HARDWARE (Intel & Network)
+# ==============================
+intel-ucode             # Microcode for Intel CPUs
+intel-media-driver      # Hardware video acceleration (Intel)
+libva-intel-driver      # VA-API driver (Intel)
+vulkan-intel            # Vulkan driver for Intel
+smartmontools           # Disk health monitoring (S.M.A.R.T.)
+zram-generator          # RAM compression
+iwd                     # Wireless daemon
+wpa_supplicant          # Wi-Fi client
+wireless_tools          # Old wireless tools (iwconfig)
+
+# ==============================
+# AUR HELPER
+# ==============================
+yay                     # Handles AUR packages
+
+# ==============================
+# DESKTOP ENVIRONMENT (Hyprland)
+# ==============================
+hyprland                # The compositor
+xdg-desktop-portal-hyprland # ESSENTIAL: Screensharing & File pickers
+hyprcursor              # Cursor management
+hypridle                # Idle daemon (auto-lock)
+hyprlock                # Screen locker
+hyprpaper               # Wallpaper engine (static)
+swww                    # Wallpaper daemon (animated)
+waybar                  # Status bar
+rofi                    # App launcher (Wayland version)
+dunst                   # Notification daemon
+wlogout                 # Logout menu
+sddm                    # Graphical Login Manager
+polkit-kde-agent        # Authentication Agent (Popup password)
+qt5-wayland             # QT5 compatibility
+qt6-wayland             # QT6 compatibility
+uwsm                    # Universal Wayland Session Manager
+grim                    # Screenshot tool
+slurp                   # Screenshot selection tool
+python-pywal            # Color scheme generator
+
+# ==============================
+# GUI APPS
+# ==============================
+kitty                   # GPU-accelerated terminal
+firefox                 # Web browser
+zathura                 # PDF Viewer
+zathura-pdf-mupdf       # PDF backend for Zathura
+pavucontrol             # GUI Audio Mixer
+
+# ==============================
+# CLI TOOLS & UTILS
+# ==============================
+yazi                    # Terminal file manager
+ffmpegthumbnailer       # Video thumbnails for Yazi
+7zip                    # Archive support for Yazi
+unzip                   # Standard unzip tool
+wl-clipboard            # Clipboard manager
+ripgrep                 # Fast grep
+fzf                     # Fast find
+htop                    # Process viewer
+wget                    # File downloader
+tmux                    # Terminal multiplexer
+xdg-user-dirs           # Manages ~/Downloads, ~/Pictures etc.
+xdg-utils               # Standard XDG scripts (xdg-open)
+
+# ==============================
+# DEV & EDITOR
+# ==============================
+neovim                  # Text editor
+nodejs                  # JS Runtime
+npm                     # JS Package manager
+tree-sitter-cli         # Parser generator
+texlive-meta            # Complete LaTeX distribution
