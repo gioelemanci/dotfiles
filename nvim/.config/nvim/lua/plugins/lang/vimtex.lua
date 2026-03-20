@@ -10,5 +10,9 @@ return {
 
       -- Optional: Enable feature concealment (e.g., show Greek symbols like λ instead of \lambda)
       vim.g.tex_conceal = "abdmg"
+
+      -- More
+      vim.g.vimtex_compiler_method = "latexmk"
+      vim.g.vimtex_syntax_enabled = 1
     end,
   }

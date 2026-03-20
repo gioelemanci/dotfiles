@@ -27,7 +27,7 @@ set zoom-step 10
 # --- Colors & Theming (Dark Mode / Catppuccin Mocha) ---
 
 # Enable "recolor" mode by default
-set recolor "true"
+set recolor "false"
 
 # Keep original colors for images/graphs
 set recolor-keephue "true"

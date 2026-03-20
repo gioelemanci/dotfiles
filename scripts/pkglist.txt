@@ -19,6 +19,14 @@ pipewire-pulse          # Audio server (PulseAudio compatibility)
 brightnessctl           # Lightweight backlight control
 
 # ==============================
+# BACKUP & RECOVERY
+# ==============================
+timeshift               # System restore tool (Snapshots)
+timeshift-autosnap      # (AUR) Auto-snapshot before pacman updates
+grub-btrfs              # Add BTRFS snapshots to GRUB boot menu
+inotify-tools           # Dependence to automatically update GRUB at snapshot creation
+
+# ==============================
 # HARDWARE (Intel & Network)
 # ==============================
 intel-ucode             # Microcode for Intel CPUs

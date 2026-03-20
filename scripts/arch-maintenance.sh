@@ -8,40 +8,43 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}🔄 Starting Arch Linux System Maintenance...${NC}"
 
-# 1. Full System Update (Repo + AUR)
-# We use yay -Syu which handles both standard repos and AUR.
-# We REMOVED --noconfirm here because you should always review updates before applying them.
-echo -e "${YELLOW}📦 Updating System and AUR packages...${NC}"
-yay -Syu
+# 0. Security check: do not run as root
+if [ "$EUID" -eq 0 ]; then
+  echo -e "${RED}❌ Error: Do not run this script with sudo! Run it as a normal user, yay will ask for the password when needed.${NC}"
+  exit 1
+fi
 
-# 2. Remove Orphaned Packages (Unused dependencies)
-# Checks if orphans exist first to avoid errors.
+# 1. Preventive Arch Keyring update (Prevents PGP errors)
+echo -e "${YELLOW}🔑 Updating Arch Linux Keyring...${NC}"
+# We use pacman with sudo here because yay might get stuck if keys are already corrupted
+sudo pacman -Sy --needed archlinux-keyring || { echo -e "${RED}❌ Keyring update failed. Aborting.${NC}"; exit 1; }
+
+# 2. Full system update (Repo + AUR)
+echo -e "${YELLOW}📦 Updating System and AUR packages...${NC}"
+# If this command fails, the script stops (exit 1)
+yay -Su || { echo -e "${RED}❌ Update error. Maintenance aborted.${NC}"; exit 1; }
+
+# 3. Remove orphaned packages
 if [[ -n $(pacman -Qtdq) ]]; then
     echo -e "${YELLOW}🧹 Removing orphaned packages...${NC}"
-    # yay -Yc is the cleanest way to remove unused deps
     yay -Yc --noconfirm
 else
     echo -e "${GREEN}✨ No orphaned packages found.${NC}"
 fi
 
-# 3. Smart Cache Cleaning
-# Keeps the last 2 versions of packages in case you need to downgrade.
-# Requires 'pacman-contrib' package.
+# 4. Smart cache cleaning (keeps the last 2 versions)
 echo -e "${YELLOW}🗑 Cleaning package cache...${NC}"
 if command -v paccache &> /dev/null; then
-    # Keep only the last 2 versions of installed packages
     sudo paccache -r -k 2
-    # Remove all versions of uninstalled packages
     sudo paccache -ruk0
     echo -e "${GREEN}✔ Cache cleaned (last 2 versions kept for safety).${NC}"
 else
-    # Fallback if paccache is missing
     echo -e "${RED}Warning: 'pacman-contrib' not found. Using standard cleanup.${NC}"
-    echo -e "${RED}Tip: Install 'pacman-contrib' for safer cache management.${NC}"
+    echo -e "${YELLOW}Tip: Install 'pacman-contrib' for safer cache management.${NC}"
     sudo pacman -Sc --noconfirm
 fi
 
-# 4. Clean AUR Cache (yay specific)
+# 5. Clean yay (AUR) cache
 echo -e "${YELLOW}🗑 Cleaning AUR cache...${NC}"
 yay -Sc --noconfirm
 
