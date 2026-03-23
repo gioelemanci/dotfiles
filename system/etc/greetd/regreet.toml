@@ -1,0 +1,15 @@
+[commands]
+reboot = [ "systemctl", "reboot" ]
+poweroff = [ "systemctl", "poweroff" ]
+
+[background]
+path = "/usr/share/backgrounds/regreet-background.jpg"
+fit = "Cover"
+
+[GTK]
+theme_name = "Arc-Dark"
+icon_theme_name = "Papirus-Dark"
+cursor_theme_name = "Adwaita"
+font_name = "Sans 11"
+application_prefer_dark_theme = true
+
