@@ -19,7 +19,7 @@ return {
   },
   config = function(_, opts)
     require("neo-tree").setup(opts)
-    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>")
-    vim.keymap.set("n", "<C-b>", ":Neotree filesystem close<CR>")
+    vim.keymap.set("n", "<C-n>", ":Neotree filesystem reveal left<CR>", { desc = "Neo-tree: Reveal current file" })
+    vim.keymap.set("n", "<C-b>", ":Neotree filesystem close<CR>", { desc = "Neo-tree: Close sidebar" })
   end,
 }
