@@ -4,8 +4,9 @@
 WALLPAPER_DIR="$HOME/dotfiles/wallpapers/Pictures/wallpapers"
 ROFI_WALL_FILE="$HOME/.config/rofi/current_wallpaper.rasi"
 
-# Pick a random image from the wallpaper folder
-WALL=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | shuf -n 1)
+# To pick a random image from the wallpaper folder, uncomment the line below and comment the next one
+# WALL=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | shuf -n 1)
+WALL="$HOME/dotfiles/wallpapers/Pictures/wallpapers/nome_tua_immagine.jpg"
 
 # Exit if no image found
 if [ -z "$WALL" ]; then
