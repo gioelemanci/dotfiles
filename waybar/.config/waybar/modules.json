@@ -88,16 +88,17 @@
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
   },
   
-  "network": {
+ "network": {
     "format-wifi": "󰤨  {essid}",
     "format-ethernet": "󰈀  Wired",
     "format-linked": "󰈀  {ifname} (No IP)",
     "format-disconnected": "󰤭  Offline",
     "format-alt": "󰤨  {signalStrength}% | 󰩟 {ipaddr}/{cidr}",
     "tooltip-format": "󰤨  {essid}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nIP: {ipaddr}/{cidr}\nGW: {gwaddr}",
+    "format-alt-click": "click-right",
     "on-click": "~/.config/ronema/ronema",
-    "on-click-right": "nm-connection-editor"
-  },
+    "on-click-middle": "nm-connection-editor"
+  }, 
 
 
 "battery": {

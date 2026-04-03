@@ -15,7 +15,7 @@ if [ -z "$WALL" ]; then
 fi
 
 # Apply wallpaper with transition
-swww img "$WALL" --transition-type wipe --transition-step 30 --transition-fps 60
+awww img "$WALL" --transition-type wipe --transition-step 30 --transition-fps 60
 
 # --- UPDATE ROFI & HYPRLOCK ---
 # 1. Write the Rofi config file

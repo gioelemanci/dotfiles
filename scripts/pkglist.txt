@@ -17,6 +17,11 @@ less                    # Terminal pager
 openssh                 # SSH Client/Server
 pipewire-pulse          # Audio server (PulseAudio compatibility)
 brightnessctl           # Lightweight backlight control
+flatpak                 # Linux app deployment framework
+networkmanager          # Network connection manager daemon
+xorg-server             # X11 display server (often needed for Xwayland)
+xorg-xhost              # X11 server access control tool
+xorg-xinit              # X11 initialization tool
 
 # ==============================
 # BACKUP & RECOVERY
@@ -27,12 +32,18 @@ grub-btrfs              # Add BTRFS snapshots to GRUB boot menu
 inotify-tools           # Dependence to automatically update GRUB at snapshot creation
 
 # ==============================
-# HARDWARE (Intel & Network)
+# HARDWARE (Intel, AMD, Nvidia & Network)
 # ==============================
 intel-ucode             # Microcode for Intel CPUs
 intel-media-driver      # Hardware video acceleration (Intel)
 libva-intel-driver      # VA-API driver (Intel)
 vulkan-intel            # Vulkan driver for Intel
+vulkan-radeon           # Vulkan driver for AMD GPUs
+vulkan-nouveau          # Vulkan driver for NVIDIA (open-source)
+xf86-video-amdgpu       # Xorg driver for modern AMD GPUs
+xf86-video-ati          # Xorg driver for legacy AMD/ATI GPUs
+xf86-video-nouveau      # Xorg driver for NVIDIA (open-source)
+fwupd                   # Firmware update daemon for Linux
 smartmontools           # Disk health monitoring (S.M.A.R.T.)
 zram-generator          # RAM compression
 iwd                     # Wireless daemon
@@ -53,19 +64,25 @@ hyprcursor              # Cursor management
 hypridle                # Idle daemon (auto-lock)
 hyprlock                # Screen locker
 hyprpaper               # Wallpaper engine (static)
-swww                    # Wallpaper daemon (animated)
+awww                    # Wallpaper daemon (animated)
 waybar                  # Status bar
 rofi                    # App launcher (Wayland version)
 dunst                   # Notification daemon
 wlogout                 # Logout menu
 sddm                    # Graphical Login Manager
+greetd                  # Minimal and flexible login manager daemon
+greetd-regreet          # Clean GTK greeter UI for greetd
+cage                    # Wayland kiosk compositor (often used to run Regreet)
 polkit-kde-agent        # Authentication Agent (Popup password)
+network-manager-applet  # System tray applet for NetworkManager (nm-applet)
 qt5-wayland             # QT5 compatibility
 qt6-wayland             # QT6 compatibility
 uwsm                    # Universal Wayland Session Manager
 grim                    # Screenshot tool
 slurp                   # Screenshot selection tool
 python-pywal            # Color scheme generator
+arc-gtk-theme           # Flat GTK theme with transparent elements
+papirus-icon-theme      # Free and open-source SVG icon theme
 
 # ==============================
 # GUI APPS
@@ -96,6 +113,7 @@ xdg-utils               # Standard XDG scripts (xdg-open)
 # DEV & EDITOR
 # ==============================
 neovim                  # Text editor
+nano                    # Simple terminal-based text editor
 nodejs                  # JS Runtime
 npm                     # JS Package manager
 tree-sitter-cli         # Parser generator

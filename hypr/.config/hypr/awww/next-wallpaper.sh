@@ -2,7 +2,7 @@
 
 # Configuration
 WALLPAPER_DIR="$HOME/dotfiles/wallpapers/Pictures/wallpapers"
-INDEX_FILE="$HOME/.config/hypr/swww/.swww_index"
+INDEX_FILE="$HOME/.config/hypr/awww/.awww_index"
 ROFI_WALL_FILE="$HOME/.config/rofi/current_wallpaper.rasi"
 
 # Get list of image files
@@ -21,7 +21,7 @@ NEXT_INDEX=$(( (INDEX + 1) % TOTAL ))
 NEXT_WALL="${IMAGES[$NEXT_INDEX]}"
 
 # Apply wallpaper with transition
-swww img "$NEXT_WALL" --transition-type wipe --transition-step 30 --transition-fps 60
+awww img "$NEXT_WALL" --transition-type wipe --transition-step 30 --transition-fps 60
 
 # --- UPDATE ROFI & HYPRLOCK ---
 # 1. Write the Rofi config file
