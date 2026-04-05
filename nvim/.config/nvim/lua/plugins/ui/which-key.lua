@@ -9,7 +9,7 @@ return {
     opts = {
       -- Style settings
       preset = "modern", -- Clean, modern look
-      
+
       -- Delay before the popup appears
       delay = function(ctx)
         return ctx.plugin and 0 or 200
@@ -17,9 +17,16 @@ return {
 
       -- Document/Group names (Optional: adds clean headers to the popup)
       spec = {
+        { "<leader>b", group = "Buffers", icon = "󰈙 " },
+        { "<leader>c", group = "Code/LSP", icon = "󰌶 " },
+        { "<leader>f", group = "Find", icon = "󰍉 " },
         { "<leader>g", group = "Git", icon = "󰊢 " },
-        { "<leader>h", group = "Git Hunks", icon = " " },
+        { "<leader>h", group = "Git Hunks", icon = "" },
+        { "<leader>q", group = "Quit", icon = "󰗼 " },
         { "<leader>t", group = "Toggles", icon = "󰔡 " },
+        { "<leader>w", group = "Windows", icon = "󰍹 " },
+        { "<leader>x", group = "Diagnostics", icon = "󱖫 " },
+        { "<localleader>l", group = "VimTeX (LaTeX)", icon = " ", mode = "n" },
       },
     },
     keys = {

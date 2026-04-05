@@ -22,7 +22,7 @@ return {
       -- This automates the setup for installed servers and fixes your error
       mason_lspconfig.setup({
         -- List of servers to install automatically
-        ensure_installed = { "lua_ls", "texlab" },
+        ensure_installed = { "lua_ls", "texlab", "ltex", "pyright" },
 
         -- HANDLERS: Define how to setup each server
         handlers = {
@@ -53,7 +53,7 @@ return {
                 texlab = {
                   build = {
                     -- Use VimTeX for building, so disable build-on-save here
-                    onSave = false, 
+                    onSave = false,
                   },
                   chktex = {
                     onOpenAndSave = true, -- Enable linter for common LaTeX errors
@@ -67,9 +67,9 @@ return {
 
       -- 3. Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info" })
-      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+      vim.keymap.set("n", "cd", vim.lsp.buf.definition, { desc = "Go to Definition" })
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename Variable" })
+      vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Variable" })
     end,
   },
 }

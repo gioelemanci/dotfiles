@@ -9,14 +9,14 @@ return {
       },
       suggestion = {
         enabled = true,
-        auto_trigger = true, -- Show gray suggestions automatically while typing
+        auto_trigger = true,         -- Show gray suggestions automatically while typing
         keymap = {
-          accept = "<C-l>", -- Press Ctrl+L to accept the whole suggestion
+          accept = "<C-l>",          -- Press Ctrl+L to accept the whole suggestion
           accept_word = "<C-Right>", -- Accept only the next word
           accept_line = false,
-          next = "<C-Down>", -- Cycle through Copilot suggestions
+          next = "<C-Down>",         -- Cycle through Copilot suggestions
           prev = "<C-Up>",
-          dismiss = "<C-e>", -- Dismiss the suggestion
+          dismiss = "<C-e>",         -- Dismiss the suggestion
         },
       },
       filetypes = {
@@ -26,7 +26,7 @@ return {
         gitcommit = false,
         gitrebase = false,
         ["."] = false,
-        -- Explicitly enable LaTeX (and other languages you'll use)
+        -- Explicitly enable languages
         tex = true,
         python = true,
         cpp = true,

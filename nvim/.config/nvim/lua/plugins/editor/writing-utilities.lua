@@ -4,17 +4,16 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
-    dependencies = { "hrsh7th/nvim-cmp" }, -- Depends on your completion engine
+    dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
       local npairs = require("nvim-autopairs")
 
       npairs.setup({
-        check_ts = true, -- Use Treesitter to check for pairs (smarter)
-        map_cr = true,   -- Map the <CR> key
+        check_ts = true, -- Use Treesitter
+        map_cr = true,   -- Map <CR>
       })
 
-      -- Integration with nvim-cmp:
-      -- Automatically adds parenthesis when you select a function from the completion menu
+      -- nvim-cmp integration
       local cmp_autopairs = require("nvim-autopairs.completion.cmp")
       local cmp = require("cmp")
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
@@ -24,14 +23,13 @@ return {
   -- nvim-surround: Add/Change/Delete surrounding characters
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use the latest stable version
+    version = "*",
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({
-        -- Usage examples:
-        --  cs"'  -> Change Surround " to '
-        --  ds"   -> Delete Surround "
-        --  ysiw] -> You Surround Inner Word with []
+        -- cs"'  -> Change " to '
+        -- ds"   -> Delete "
+        -- ysiw] -> Surround word with []
       })
     end,
   },
@@ -39,6 +37,21 @@ return {
   -- Rainbow Delimiters: Colorize matching brackets
   {
     "HiPhish/rainbow-delimiters.nvim",
-    event = { "BufReadPost", "BufNewFile" }, -- Load when opening a file
+    event = { "BufReadPost", "BufNewFile" },
+  },
+
+  -- vim-illuminate: Automatically highlight other uses of the word under the cursor
+  {
+    "RRethy/vim-illuminate",
+    config = function()
+      require('illuminate').configure({
+        delay = 200, -- Highlight delay (ms)
+
+        -- Filetypes to ignore
+        -- filetypes_denylist = {
+        --     'dirbuf', 'dirvish', 'fugitive', 'alpha', 'neo-tree', 'TelescopePrompt'
+        -- },
+      })
+    end,
   },
 }

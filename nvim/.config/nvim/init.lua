@@ -5,7 +5,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
   local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  
+
   -- Handle errors during cloning
   if vim.v.shell_error ~= 0 then
     vim.api.nvim_echo({
@@ -24,8 +24,9 @@ vim.opt.rtp:prepend(lazypath)
 -----------------------------------------------------------------------------
 -- 2. OPTIONS: Load basic Neovim settings (indentation, line numbers, etc.)
 -----------------------------------------------------------------------------
--- This requires the file: lua/vim-options.lua
-require("vim-options")
+require("config.options")
+require("config.keymaps")
+require("config.diagnostics")
 
 -----------------------------------------------------------------------------
 -- 3. PLUGINS: Initialize the plugin manager and import modules
