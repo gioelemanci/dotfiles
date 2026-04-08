@@ -49,6 +49,7 @@ return {
           ["texlab"] = function()
             lspconfig.texlab.setup({
               capabilities = capabilities,
+
               settings = {
                 texlab = {
                   build = {
@@ -62,14 +63,35 @@ return {
               },
             })
           end,
+
+          -- D. Specific configuration for LTeX (Basic & Manual)
+          ["ltex"] = function()
+            -- Path to your personal dictionary
+            local dict_path = vim.fn.expand("~/.config/nvim/spell/en-US.txt")
+
+            lspconfig.ltex.setup({
+              capabilities = capabilities,
+              settings = {
+                ltex = {
+                  language = "en-US",
+                  dictionary = {
+                    -- The leading ":" tells LTeX to load words from the file
+                    ["en-US"] = { ":" .. dict_path }
+                  },
+                },
+              },
+            })
+          end,
+
         },
       })
 
       -- 3. Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover Info" })
-      vim.keymap.set("n", "cd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
       vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { desc = "Rename Variable" })
+      vim.keymap.set("n", "z=", vim.lsp.buf.code_action, { desc = "Spelling/Grammar Suggestions" })
     end,
   },
 }

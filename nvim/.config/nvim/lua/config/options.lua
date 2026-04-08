@@ -44,3 +44,14 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
   end,
   desc = "Open PDFs with Zathura instead of reading them as text",
 })
+
+-- TEXT & LATEX SETTINGS
+-- Enable soft wrap specifically for prose/text-heavy files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "tex", "markdown", "text" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    vim.opt_local.breakindent = true -- Keep indent on visual wrap
+  end,
+})
