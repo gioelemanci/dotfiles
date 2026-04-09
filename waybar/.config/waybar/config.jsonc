@@ -4,28 +4,29 @@
   // Position
   "layer": "top",
   "position": "top",
-  "height": 35,
-  "spacing": 4,
+  "height": 32,
+  "spacing": 5,
   
   // Load modules
   "include": ["~/.config/waybar/modules.json"],
 
   // Modules layout
   "modules-left": [
-    "hyprland/workspaces"
-    //"hyprland/window"
+    "hyprland/workspaces",
+    //"hyprland/mode", // to be implemented
+    "mpris"
   ],
+
   "modules-center": [
     "clock"
   ],
+
   "modules-right": [
-    "tray",
+    "group/tray-drawer",
     "pulseaudio",
-    "idle_inhibitor",
-    "network",
+    "group/connections-drawer",
     "battery",
-    "custom/power"
+    "group/hardware-drawer"
   ],
 
-  // Groups...
-}
+  }

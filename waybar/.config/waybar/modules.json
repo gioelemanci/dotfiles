@@ -1,74 +1,64 @@
 { 
   // ===== LEFT MODULES =====
 "hyprland/workspaces": {
-    "on-scroll-up": "hyprctl dispatch workspace r-1",
-    "on-scroll-down": "hyprctl dispatch workspace r+1",
     "on-click": "activate",
     "active-only": false,
     "all-outputs": true,
-    
-    // Mostra solo il nome (il numero) del workspace
     "format": "{name}",
-    
-    // Rimuoviamo format-icons poiché non servono più
     "persistent-workspaces": {
       "*": 5
     }
 },
-  
-  "hyprland/window": {
-    "format": "{title}",
-    "max-length": 50,
-    "separate-outputs": true,
-    "rewrite": {
-      "(.*) — Mozilla Firefox": "🌍 $1",
-      "(.*) - nvim": "💻 $1",
-      "(.*) - zsh": "  $1"
-    }
+
+  "mpris": {
+    "format": "{status_icon} {title} <small>({position}/{length})</small>",
+    "format-paused": "{status_icon} <i>{title}</i> <small>({position}/{length})</small>",
+    "format-stopped": "",
+    "status-icons": {
+      "playing": "",
+      "paused": ""
+    },
+    "max-length": 45
   },
   
   // ===== CENTER MODULES =====
   "clock": {
-    "interval": 1,
-    "format": "{:%H:%M:%S}",
-    "format-alt": "{:%Y-%m-%d %H:%M:%S %Z}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "interval": 60,
+    "format": "{:%H:%M}",
+    "format-alt": "{:%d %B}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
-      "mode": "year",
-      "mode-mon-col": 4,
-      "weeks-pos": "right",
+      "mode": "month",
+      "weeks-pos": "none",
       "on-scroll": 1,
       "format": {
         "months": "<span color='#ffead3'><b>{}</b></span>",
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
-        "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
-        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
         "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
       }
-    },
-    "actions": {
-      "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
     }
   },
-  
+    
   // ===== RIGHT MODULES =====
-  "tray": {
-    "icon-size": 21,
-    "spacing": 10
-  },
-  
-  "idle_inhibitor": {
-    "format": "{icon}",
-    "format-icons": {
-      "activated": "󰒳",
-      "deactivated": "󰒲"
+
+  "group/tray-drawer": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/arrow",
+      "tray"
+    ],
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "tray-drawer",
+      "transition-left-to-right": false
     }
   },
-  
+
+  "custom/arrow": {
+    "format": "",
+    "tooltip": false
+  },
+
   "pulseaudio": {
     "scroll-step": 5,
     "format": "{icon} {volume}",
@@ -86,6 +76,36 @@
     "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+  },
+
+  "group/connections-drawer": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/connections",
+      "network",
+      "bluetooth"
+    ],
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "connections-drawer",
+      "transition-left-to-right": false
+    }
+  },
+
+  "custom/connections": {
+    "format": "󰖩",
+    "tooltip": false
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-disabled": "󰂲 Off",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} 󰥉 {device_battery_percentage}%",
+    "on-click": "blueman-manager",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
   },
   
  "network": {
@@ -121,10 +141,35 @@
   "on-click-right": "kitty battop"
 },
  
-  "custom/power": {
-    "format": "⏻",
-    "tooltip": "Power Menu",
-    "on-click": "wlogout -p layer-shell",
-    "on-click-right": "systemctl poweroff"
-  }
+"group/hardware-drawer": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/system",
+      "cpu",
+      "memory"
+    ],
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "hardware-drawer",
+      "transition-left-to-right": false
+    }
+  },
+
+  "custom/system": {
+    "format": "",
+    "tooltip": false
+  },
+
+  "cpu": {
+    "format": " {usage}%",
+    "on-click": "kitty --class system-monitor -e btop",
+    "tooltip": false
+  },
+
+  "memory": {
+    "format": " {}%",
+    "on-click": "kitty --class system-monitor -e htop",
+    "tooltip": false
+  },
+
 }
