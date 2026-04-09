@@ -140,3 +140,55 @@ window#waybar {
 #custom-arrow:hover {
   color: @color1;
 }
+
+/* ===== AUDIO SLIDER E TEXT (Senza errori GTK) ===== */
+#pulseaudio-text {
+  margin: 0 2px;
+  padding: 2px;
+  color: @foreground;
+}
+
+#pulseaudio-slider {
+  min-width: 80px; 
+  margin: 0 4px;
+}
+
+#pulseaudio-slider scale {
+  min-height: 10px; 
+  margin: 0;
+}
+
+/* La traccia vuota (Sfondo) */
+#pulseaudio-slider scale trough {
+  min-height: 4px; 
+  min-width: 80px; 
+  background-color: #555555; /* Grigio solido, niente alpha() che fa crashare o sparire le cose */
+  background-image: none; /* Disattiva il tema di default di sistema */
+  border: none;
+  border-radius: 0; 
+}
+
+/* La parte colorata (Volume attuale) */
+#pulseaudio-slider scale highlight {
+  background-color: @color1; 
+  background-image: none;
+  border: none;
+  border-radius: 0;
+}
+
+/* Il quadratino trascinabile */
+#pulseaudio-slider scale slider {
+  min-width: 8px;  
+  min-height: 8px; 
+  background-color: @foreground;
+  background-image: none;
+  border: none;
+  border-radius: 0; 
+  box-shadow: none;
+  margin: -2px 0; 
+}
+
+/* Effetto hover sul quadratino */
+#pulseaudio-slider scale slider:hover {
+  background-color: @color1;
+}

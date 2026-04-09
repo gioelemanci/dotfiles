@@ -5,7 +5,7 @@
   "layer": "top",
   "position": "top",
   "height": 32,
-  "spacing": 5,
+  "spacing": 4,
   
   // Load modules
   "include": ["~/.config/waybar/modules.json"],
@@ -23,7 +23,7 @@
 
   "modules-right": [
     "group/tray-drawer",
-    "pulseaudio",
+    "group/audio-drawer",
     "group/connections-drawer",
     "battery",
     "group/hardware-drawer"

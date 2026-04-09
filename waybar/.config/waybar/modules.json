@@ -4,7 +4,7 @@
     "on-click": "activate",
     "active-only": false,
     "all-outputs": true,
-    "format": "{name}",
+    "format": "{}",
     "persistent-workspaces": {
       "*": 5
     }
@@ -59,23 +59,49 @@
     "tooltip": false
   },
 
+  "group/audio-drawer": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "pulseaudio#text",
+      "pulseaudio/slider"
+    ],
+    "drawer": {
+      "transition-duration": 300,
+      "children-class": "audio-drawer",
+      "transition-left-to-right": false
+    }
+  },
+
   "pulseaudio": {
-    "scroll-step": 5,
-    "format": "{icon} {volume}",
-    "format-muted": "󰖁 Muted",
+    "format": "{icon}",
+    "format-muted": "󰖁",
     "format-icons": {
       "headphone": "󰋋",
       "hands-free": "󱡏",
       "headset": "󰋎",
-      "phone": "",
-      "portable": "",
-      "car": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
       "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
     "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+    "tooltip": true,
+    "tooltip-format": "Volume: {volume}%"
+  },
+
+  "pulseaudio#text": {
+    "format": "{volume}",
+    "tooltip": false
+  },
+
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
   },
 
   "group/connections-drawer": {
@@ -120,27 +146,17 @@
     "on-click-middle": "nm-connection-editor"
   }, 
 
-
 "battery": {
-  "states": {
-    "warning": 30,
-    "critical": 15
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "󰁹 {capacity}",
+    "format-charging": "⚡{capacity}",
+    "format-plugged": "⚡{capacity}",
+    "on-click": "kitty --class floating-tui -o remember_window_size=no -o initial_window_width=850 -o initial_window_height=550 -e battop"
   },
-  "format": "{icon} {capacity}",
-  "format-charging": "⚡ {capacity}",
-  "format-plugged": "⚡ {capacity}",
-  "format-alt": "{icon} {time}",
-  "format-icons": [
-    "৹ ৹ ৹ ৹ ৹",  // 0–19%
-    "▋৹ ৹ ৹ ৹",  // 20–39%
-    "▋▋৹ ৹ ৹",  // 40–59%
-    "▋▋▋৹ ৹",  // 60–79%
-    "▋▋▋▋৹",  // 80–99%
-    "▋▋▋▋▋"   // 100%
-  ],
-  "on-click-right": "kitty battop"
-},
- 
+
 "group/hardware-drawer": {
     "orientation": "horizontal",
     "modules": [
@@ -161,14 +177,14 @@
   },
 
   "cpu": {
-    "format": " {usage}%",
-    "on-click": "kitty --class system-monitor -e btop",
+    "format": " {usage}",
+    "on-click": "kitty --class floating-tui -o remember_window_size=no -o initial_window_width=850 -o initial_window_height=550 -e btop",
     "tooltip": false
   },
 
   "memory": {
-    "format": " {}%",
-    "on-click": "kitty --class system-monitor -e htop",
+    "format": " {}",
+    "on-click": "kitty --class floating-tui -o remember_window_size=no -o initial_window_width=850 -o initial_window_height=550 -e htop",
     "tooltip": false
   },
 
