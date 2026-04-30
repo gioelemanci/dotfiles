@@ -11,7 +11,7 @@
 },
 
   "mpris": {
-    "format": "{status_icon} {title} <small>({position}/{length})</small>",
+    "format": "{status_icon} {title} <small>({length})</small>",
     "format-paused": "{status_icon} <i>{title}</i> <small>({position}/{length})</small>",
     "format-stopped": "",
     "status-icons": {
@@ -59,12 +59,11 @@
     "tooltip": false
   },
 
-  "group/audio-drawer": {
+"group/audio-drawer": {
     "orientation": "horizontal",
     "modules": [
-      "pulseaudio",
-      "pulseaudio#text",
-      "pulseaudio/slider"
+      "pulseaudio#icon",
+      "pulseaudio#text"
     ],
     "drawer": {
       "transition-duration": 300,
@@ -73,7 +72,7 @@
     }
   },
 
-  "pulseaudio": {
+  "pulseaudio#icon": {
     "format": "{icon}",
     "format-muted": "󰖁",
     "format-icons": {
@@ -87,21 +86,19 @@
     },
     "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
     "on-click-right": "pavucontrol",
-    "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
-    "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
-    "tooltip": true,
-    "tooltip-format": "Volume: {volume}%"
+    "scroll-step": 5,
+    "reverse-scrolling": true,
+    "tooltip": false
   },
 
   "pulseaudio#text": {
     "format": "{volume}",
+    "format-muted": "0",
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "scroll-step": 5,
+    "reverse-scrolling": true,
     "tooltip": false
-  },
-
-  "pulseaudio/slider": {
-    "min": 0,
-    "max": 100,
-    "orientation": "horizontal"
   },
 
   "group/connections-drawer": {
@@ -142,7 +139,7 @@
     "format-alt": "󰤨  {signalStrength}% | 󰩟 {ipaddr}/{cidr}",
     "tooltip-format": "󰤨  {essid}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nIP: {ipaddr}/{cidr}\nGW: {gwaddr}",
     "format-alt-click": "click-right",
-    "on-click": "~/.config/ronema/ronema",
+"on-click": "kitty --class floating-tui -o remember_window_size=no -o initial_window_width=850 -o initial_window_height=550 -e fancy-nmtui.sh",
     "on-click-middle": "nm-connection-editor"
   }, 
 
@@ -152,8 +149,8 @@
       "critical": 15
     },
     "format": "󰁹 {capacity}",
-    "format-charging": "⚡{capacity}",
-    "format-plugged": "⚡{capacity}",
+    "format-charging": "⚡ {capacity}",
+    "format-plugged": "⚡ {capacity}",
     "on-click": "kitty --class floating-tui -o remember_window_size=no -o initial_window_width=850 -o initial_window_height=550 -e battop"
   },
 
