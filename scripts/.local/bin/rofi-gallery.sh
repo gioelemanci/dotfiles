@@ -3,7 +3,7 @@
 # ROFI VISUAL WALLPAPER GALLERY
 # =====================================================================
 
-WALLPAPER_DIR="$HOME/dotfiles/wallpapers/Pictures/wallpapers"
+WALLPAPER_DIR="$HOME/Pictures/wallpapers"
 ROFI_WALL_FILE="$HOME/.config/rofi/current_wallpaper.rasi"
 
 # 1. Check if the wallpaper directory exists

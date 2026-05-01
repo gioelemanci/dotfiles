@@ -28,7 +28,7 @@ awww img "$WALL" --transition-type wipe --transition-step 30 --transition-fps 60
 magick "$WALL" -resize 500x500^ -gravity center -extent 500x500 /tmp/rofi_thumb.png
 
 # 2. Write the Rofi config file pointing to the fast thumbnail
-echo "* { current-image: url(\"/tmp/rofi_thumb.png\", height); }" > "$ROFI_WALL_FILE"
+echo "* { current-image: url(\"$HOME/.cache/rofi_thumb.png\", height); }" > "$ROFI_WALL_FILE"
 
 # 3. Copy the original image for Hyprlock
 cp "$WALL" /tmp/current_wallpaper.png
