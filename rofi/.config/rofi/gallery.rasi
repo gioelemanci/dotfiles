@@ -1,0 +1,67 @@
+/* ==========================================================================
+   HORIZONTAL WALLPAPER GALLERY (THIN BOTTOM BAR)
+   ========================================================================== */
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    bg-base:            #1e1e2ee6; 
+    bg-alt:             #313244;
+    accent:             var(selected-normal-background, #89b4fa);
+
+    background-color:   transparent;
+    margin:             0;
+    padding:            0;
+}
+
+window {
+    location:           south;
+    anchor:             south;
+    width:              100%;
+    height:             220px; /* Thinner bottom bar */
+    background-color:   @bg-base;
+    border-top:         2px;   /* Thin bright accent line on top */
+    border-color:       @accent;
+    padding:            15px 20px;
+}
+
+mainbox {
+    children:           [ "listview" ]; 
+    border:             0px; /* Prevents any default Rofi borders */
+}
+
+listview {
+    layout:             horizontal; 
+    spacing:            15px;      /* Space between thumbnails */
+    lines:              100;       /* Allows infinite horizontal expansion */
+    cycle:              false;
+    scrollbar:          false;
+    border:             0px;       /* Kills the default dark horizontal line! */
+}
+
+element {
+    orientation:        vertical;
+    padding:            10px;
+    border-radius:      10px;
+    cursor:             pointer;
+    border:             0px;
+}
+
+element normal.normal, element alternate.normal {
+    background-color:   transparent;
+}
+
+element selected.normal {
+    background-color:   @accent;
+}
+
+element-icon {
+    size:               160px; /* Forces Rofi to expand the width, creating a 16:9 rectangle */
+    horizontal-align:   0.5;
+    vertical-align:     0.5;
+    cursor:             pointer;
+}
+
+element-text {
+    enabled:            false; /* Hides text, keeping it 100% visual */
+}

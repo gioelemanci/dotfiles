@@ -1,45 +1,56 @@
 #!/bin/bash
 # =====================================================================
-# ROFI VISUAL WALLPAPER GALLERY
+# ROFI HORIZONTAL WALLPAPER GALLERY (FAST CACHED VERSION)
 # =====================================================================
 
-WALLPAPER_DIR="$HOME/Pictures/wallpapers"
+# --- Configuration ---
+WALLPAPER_DIR="$HOME/dotfiles/wallpapers/Pictures/wallpapers"
 ROFI_WALL_FILE="$HOME/.config/rofi/current_wallpaper.rasi"
+CACHE_DIR="$HOME/.cache/rofi_wallpapers"
 
-# 1. Check if the wallpaper directory exists
+# Check if directories exist
 if [ ! -d "$WALLPAPER_DIR" ]; then
     notify-send "Error" "Wallpaper directory not found!"
     exit 1
 fi
 
-# 2. Read files and format them for Rofi (Text \0icon\x1fImagePath)
-# Also injects CSS directly to create a 4-column visual grid layout
-SELECTED_FILE=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | while read -r img; do
-    echo -en "$(basename "$img")\0icon\x1f$img\n"
-done | rofi -dmenu -i -show-icons -p "🖼️ Wallpapers" -theme-str '
-    window { width: 60%; height: 60%; }
-    listview { columns: 4; lines: 3; flow: horizontal; spacing: 20px; }
-    element { orientation: vertical; padding: 10px; border-radius: 15px; }
-    element-icon { size: 10em; }
-    element-text { horizontal-align: 0.5; padding: 5px 0 0 0; }')
+# Create cache directory if it doesn't exist
+mkdir -p "$CACHE_DIR"
 
-# 3. If an image was successfully selected
-if [ -n "$SELECTED_FILE" ]; then
-    FULL_PATH="$WALLPAPER_DIR/$SELECTED_FILE"
+# 1. Feed images to Rofi using thumbnails
+SELECTED_FILE=$(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | sort | while read -r img; do
     
-    # Apply the wallpaper
-    awww img "$FULL_PATH" --transition-type wipe --transition-step 30 --transition-fps 60
+    # Get just the filename (e.g., "mountain.jpg")
+    filename=$(basename "$img")
+    thumb_path="$CACHE_DIR/$filename"
     
-    # Create a fast thumbnail for the main Rofi menu
-    magick "$FULL_PATH" -resize 500x500^ -gravity center -extent 500x500 /tmp/rofi_thumb.png
+    # If thumbnail doesn't exist, generate a tiny 300px version fast
+    if [ ! -f "$thumb_path" ]; then
+        magick "$img" -thumbnail 300x300^ -gravity center -extent 300x300 "$thumb_path"
+    fi
     
-    # Update Rofi and Hyprlock configs
-    echo "* { current-image: url(\"/tmp/rofi_thumb.png\", height); }" > "$ROFI_WALL_FILE"
-    cp "$FULL_PATH" /tmp/current_wallpaper.png
+    # Output the FULL PATH for the script to use, but show the THUMBNAIL in Rofi
+    echo -en "$img\0icon\x1f$thumb_path\n"
     
-    # Generate Pywal colors in the background to avoid freezing the script
-    wal -i "$FULL_PATH" -s &
-    
-    # Reload Waybar to apply the new colors
-    ~/.config/waybar/launch-waybar.sh
+done | rofi -dmenu -i -show-icons -theme ~/.config/rofi/gallery.rasi)
+
+# Exit if nothing was selected
+if [ -z "$SELECTED_FILE" ]; then
+    exit 0
 fi
+
+# =====================================================================
+# APPLY WALLPAPER & UPDATE SYSTEM
+# =====================================================================
+
+# 1. Apply wallpaper
+awww img "$SELECTED_FILE" --transition-type wipe --transition-step 30 --transition-fps 60
+
+# 2. Copy for Hyprlock
+cp "$SELECTED_FILE" /tmp/current_wallpaper.png
+
+# 3. Generate Pywal colors
+wal -i "$SELECTED_FILE" -s &
+
+# 4. Reload Waybar
+~/.local/bin/waybar-launch.sh

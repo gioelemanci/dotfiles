@@ -6,7 +6,6 @@
 # --- Configuration ---
 WALLPAPER_DIR="$HOME/dotfiles/wallpapers/Pictures/wallpapers"
 INDEX_FILE="$HOME/.cache/.awww_index"
-ROFI_WALL_FILE="$HOME/.config/rofi/current_wallpaper.rasi"
 
 # Get the list of image files
 IMAGES=($(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" \) | sort))
@@ -27,23 +26,17 @@ NEXT_WALL="${IMAGES[$NEXT_INDEX]}"
 awww img "$NEXT_WALL" --transition-type wipe --transition-step 30 --transition-fps 60
 
 # =====================================================================
-# UPDATE ROFI, HYPRLOCK & SYSTEM COLORS
+# UPDATE HYPRLOCK & SYSTEM COLORS
 # =====================================================================
 
-# 1. Create a lightweight thumbnail for instant Rofi loading (Requires imagemagick)
-magick "$NEXT_WALL" -resize 500x500^ -gravity center -extent 500x500 /tmp/rofi_thumb.png
+# 1. Copy the original image for Hyprlock (so it can apply its own blur effect)
+cp "$NEXT_WALL" /tmp/current_wallpaper.png
 
-# 2. Write the Rofi config file pointing to the fast thumbnail
-  echo "* { current-image: url(\"$HOME/.cache/rofi_thumb.png\", height); }" > "$ROFI_WALL_FILE"
+# 2. Generate Pywal color palette
+wal -i "$NEXT_WALL" -s
 
-  # 3. Copy the original image for Hyprlock (so it can apply its own blur effect)
-  cp "$NEXT_WALL" /tmp/current_wallpaper.png
+# 3. Save the new index
+echo "$NEXT_INDEX" > "$INDEX_FILE"
 
-  # 4. Generate Pywal color palette
-  wal -i "$NEXT_WALL" -s
-
-  # 5. Save the new index
-  echo "$NEXT_INDEX" > "$INDEX_FILE"
-
-  # 6. Reload Waybar to apply the new Pywal colors
-  ~/.config/waybar/launch-waybar.sh
+# 4. Reload Waybar to apply the new Pywal colors
+~/.local/bin/waybar-launch.sh
