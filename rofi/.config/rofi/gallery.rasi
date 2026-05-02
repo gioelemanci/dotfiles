@@ -34,7 +34,7 @@ listview {
     layout:             horizontal; 
     spacing:            15px;      /* Space between thumbnails */
     lines:              100;       /* Allows infinite horizontal expansion */
-    cycle:              false;
+    cycle:              true;
     scrollbar:          false;
     border:             0px;       /* Kills the default dark horizontal line! */
 }

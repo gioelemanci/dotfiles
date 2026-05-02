@@ -1,0 +1,85 @@
+/* ==========================================================================
+   CLIPBOARD AND TEXT MENUS (DMENU)
+   ========================================================================== */
+
+@import "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    bg-base:            #1e1e2e;
+    bg-alt:             #313244;
+    text-base:          #cdd6f4;
+    accent:             var(selected-normal-background, #89b4fa);
+
+    background-color:   transparent;
+    text-color:         @text-base;
+    margin:             0;
+    padding:            0;
+}
+
+window {
+    width:              40em;
+    background-color:   @bg-base;
+    border:             2px;
+    border-color:       @accent;
+    border-radius:      15px;
+    padding:            15px;
+    location:           center;
+}
+
+mainbox {
+    orientation:        vertical;
+    spacing:            15px;
+    children:           [ "inputbar", "listview" ];
+}
+
+/* ---- Search Bar ---- */
+inputbar {
+    background-color:   @bg-alt;
+    border-radius:      10px;
+    padding:            12px 15px;
+    spacing:            10px;
+    children:           [ "prompt", "entry" ];
+}
+
+prompt {
+    text-color:         @accent;
+    font:               "JetBrainsMono Nerd Font 14";
+}
+
+entry {
+    placeholder:        "Search clipboard...";
+    placeholder-color:  #7f849c;
+    text-color:         @text-base;
+    vertical-align:     0.5;
+}
+
+/* ---- Clipboard List ---- */
+listview {
+    expand:             true;
+    columns:            1;
+    lines:              8;
+    spacing:            5px;
+    scrollbar:          false;
+    cycle:              true;
+}
+
+element {
+    padding:            10px 15px;
+    border-radius:      10px;
+    cursor:             pointer;
+}
+
+element normal.normal, element alternate.normal {
+    background-color:   transparent;
+    text-color:         @text-base;
+}
+
+element selected.normal {
+    background-color:   @accent;
+    text-color:         @bg-base;
+}
+
+element-text {
+    vertical-align:     0.5;
+    text-color:         inherit;
+}
