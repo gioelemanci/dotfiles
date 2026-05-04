@@ -7,10 +7,10 @@ configuration {
     show-icons:                 true;
     
     /* Icon-only mode labels for the sidebar */
-    display-drun:               "";
-    display-run:                "";
-    display-filebrowser:        "";
-    display-window:             "";
+    display-drun:               " ";
+    display-run:                " ";
+    display-filebrowser:        " ";
+    display-window:             " ";
     
     drun-display-format:        "{name}";
     hover-select:               true;

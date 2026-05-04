@@ -52,5 +52,5 @@ cp "$SELECTED_FILE" /tmp/current_wallpaper.png
 # 3. Generate Pywal colors
 wal -i "$SELECTED_FILE" -s &
 
-# 4. Reload Waybar
-~/.local/bin/waybar-launch.sh
+# 4. Reload ui to apply new colors (Waybar, SwayOSD)
+~/.local/bin/ui-reload.sh

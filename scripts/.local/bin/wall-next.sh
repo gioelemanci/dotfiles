@@ -38,5 +38,5 @@ wal -i "$NEXT_WALL" -s
 # 3. Save the new index
 echo "$NEXT_INDEX" > "$INDEX_FILE"
 
-# 4. Reload Waybar to apply the new Pywal colors
-~/.local/bin/waybar-launch.sh
+# 4. Reload ui to apply the new Pywal colors
+~/.local/bin/ui-reload.sh

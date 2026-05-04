@@ -6,11 +6,11 @@ return {
 
     -- Lazy loading: Telescope loads only when these keys are pressed
     keys = {
-      { "<leader>ff", "<cmd>Telescope find_files<cr>",                      desc = "Find Files" },
-      { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>",          desc = "Find Hidden Files" },
-      { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                        desc = "Recent Files" },
-      { "<leader>fg", "<cmd>Telescope live_grep<cr>",                       desc = "Live Grep (Text)" },
-      { "<leader>fb", "<cmd>Telescope buffers<cr>",                         desc = "Find in Buffers" },
+      { "<leader>ff", "<cmd>Telescope find_files<cr>",               desc = "Find Files" },
+      { "<leader>fh", "<cmd>Telescope find_files hidden=true<cr>",   desc = "Find Hidden Files" },
+      { "<leader>fr", "<cmd>Telescope oldfiles<cr>",                 desc = "Recent Files" },
+      { "<leader>fg", "<cmd>Telescope live_grep<cr>",                desc = "Live Grep (Text)" },
+      { "<leader>fb", "<cmd>Telescope buffers<cr>",                  desc = "Find in Buffers" },
       { "<leader>th", "<cmd>Telescope colorscheme enable_preview=true<cr>", desc = "Switch Theme" },
     },
 
@@ -19,12 +19,18 @@ return {
 
       telescope.setup({
         defaults = {
-          -- Globally ignore heavy/useless directories
+          -- Globally ignore heavy/useless directories (vital when searching hidden files)
           file_ignore_patterns = { ".git/", "node_modules/" },
         },
         pickers = {
           find_files = {
             hidden = false, -- Standard search hides dotfiles
+          },
+          live_grep = {
+            -- Pass the '--hidden' flag to ripgrep to search inside .config and other dot-folders
+            additional_args = function()
+              return { "--hidden" }
+            end
           }
         }
       })

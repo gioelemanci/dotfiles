@@ -28,5 +28,5 @@ cp "$WALL" /tmp/current_wallpaper.png
 # 2. Generate Pywal color palette
 wal -i "$WALL" -s
 
-# 3. Reload Waybar
-~/.config/waybar/launch-waybar.sh
+# 3. Reload ui
+~/.local/bin/ui-reload.sh
