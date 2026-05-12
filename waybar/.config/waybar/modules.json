@@ -26,7 +26,7 @@
     "interval": 60,
     "format": "{:%H:%M}",
     "format-alt": "{:%d %B}",
-    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "tooltip-format": "<tt>{calendar}</tt>",
     "calendar": {
       "mode": "month",
       "weeks-pos": "none",
@@ -190,7 +190,7 @@
   },
 
   "memory": {
-    "format": "󰘚 {}",
+    "format": " {}",
     "on-click": "kitty --class floating-tui -o remember_window_size=no -o initial_window_width=850 -o initial_window_height=550 -e htop",
     "tooltip": false
   },
