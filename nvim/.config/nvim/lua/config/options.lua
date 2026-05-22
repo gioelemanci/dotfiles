@@ -42,10 +42,13 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
     -- Immediately close the PDF buffer before Neovim shows weird characters
     vim.api.nvim_buf_delete(args.buf, { force = true })
   end,
-  desc = "Open PDFs with Zathura instead of reading them as text",
+  desc = "Open PDFs with Zathura",
 })
 
+-- ==========================================
 -- TEXT & LATEX SETTINGS
+-- ==========================================
+
 -- Enable soft wrap specifically for prose/text-heavy files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "tex", "markdown", "text" },
@@ -54,4 +57,17 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.linebreak = true
     vim.opt_local.breakindent = true -- Keep indent on visual wrap
   end,
+})
+
+-- Latex visual mode wrapping (Bold & Italic)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "tex",
+  callback = function()
+    local opts = { buffer = true, silent = true }
+
+    vim.keymap.set("v", "<C-b>", "c\\textbf{<C-r>\"}<Esc>", opts)
+
+    vim.keymap.set("v", "<C-i>", "c\\emph{<C-r>\"}<Esc>", opts)
+  end,
+  desc = "Visual mode wrapping for Bold and Italic text",
 })

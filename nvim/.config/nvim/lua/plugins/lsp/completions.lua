@@ -14,7 +14,20 @@ return {
 
     config = function()
       local cmp = require("cmp")
+
+      -- 1. REQUIRE LUASNIP
+      local ls = require("luasnip")
+
+      -- 2. ENABLE AUTOSNIPPETS AND LIVE UPDATES
+      ls.config.set_config({
+        enable_autosnippets = true,
+        update_events = "TextChanged,TextChangedI",
+      })
+
       require("luasnip.loaders.from_vscode").lazy_load()
+
+      -- 3. LOAD YOUR PERSONAL LUA SNIPPETS FOLDER
+      require("luasnip.loaders.from_lua").lazy_load({ paths = { vim.fn.stdpath("config") .. "/lua/snippets" } })
 
       cmp.setup({
         snippet = {
